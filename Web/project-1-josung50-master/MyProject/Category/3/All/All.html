@@ -1,0 +1,92 @@
+<!DOCTYPE>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../../nav.css">
+<link re="stylesheet" type="text/css" href="../../../popup.css">
+<title>메인</title>
+</head>
+<body style="background-color:ghostwhite">
+
+<mycontainer>
+	<myheader>
+		<div style="text-align:center; border-bottom: 1px solid gray;">
+			<a class="mysignup_login">
+				<span>Log In</span>
+			</a>
+			<a class="mysignup_login">
+				<span>Sign Up</span>
+			</a>
+			<br>
+			<span style="font-size:80px;color:red;font-family:'Comic Sans MS', cursive, sans-serif;"><a style="text-decoration:none; color:red;"href="../../../main.html">Cook Pedia</a></span>
+			<p><input class="search" type="text"><img style="background-color:ghostwhite;width:15;" src="../../../search.jpg"></p>
+		</div>
+		
+		<ul class="mynav">
+			<li class="dropdown">
+				<a href="javascript:void(0)" class="dropbtn"><strong>종류별</strong></a>
+				<div class="dropdown-content">
+					<a href="../../1/All/All.html">전체</a>
+					<a href="../../1/SideDish/SideDish.html">밑반찬</a>
+					<a href="../../1/MainDish/MainDish.html">메인반찬</a>
+					<a href="../../1/Soup/Soup.html">국/탕</a>
+					<a href="../../1/Dessert/Dessert.html">디저트</a>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="javascript:void(0)" class="dropbtn"><strong>상황별</strong></a>
+				<div class="dropdown-content">
+					<a href="../../2/All/All.html">전체</a>
+					<a href="../../2/Fast/Fast.html">초스피드</a>
+					<a href="../../2/DrinkSnack/DrinkSnack.html">술안주</a>
+					<a href="../../2/Diet/Diet.html">다이어트</a>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="javascript:void(0)" class="dropbtn"><strong>재료별</strong></a>
+				<div class="dropdown-content">
+					<a href="All.html">전체</a>
+					<a href="../Beaf/Beaf.html">소고기</a>
+					<a href="../Pork/Pork.html">돼지고기</a>
+					<a href="../Chicken/Chicken.html">닭고기</a>
+					<a href="../Vegetables/Vegetables.html">채소류</a>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="javascript:void(0)" class="dropbtn"><strong>방법별</strong></a>
+				<div class="dropdown-content">
+					<a href="../../4/All/All.html">전체</a>
+					<a href="../../4/StirFry/StirFry.html">볶음</a>
+					<a href="../../4/Pancake/Pancake.html">부침</a>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="javascript:ContactMe()" class="dropbtn"><strong>Contact Me</strong></a>
+			</li>
+		</ul>
+	</myheader>
+
+	<table class="mylayout">
+
+		<h1 style="text-align:center; margin-top:60px;">재료별 : 총 <em style="color:red"> 0 </em>개의 맛있는 레시피가 있습니다.</h1>
+		<tr>
+		</tr>
+	</table>
+</mycontainer>
+
+<!--스크립트-->
+<script language="javascript">
+function myFunc(url) {
+	var popupX = (window.screen.width / 2) - (760/2);
+	var popupY = (window.screen.height / 2) - (600/2);
+	
+	var popup;
+	popup = window.open(url,"",'status=no, height=600, width=760, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY=50, resizable=no, fullscreen=no, channelmode=no, location=no');
+	popup.blur();
+}
+
+function ContactMe() {
+	alert("제 연락처는 010-XXXX-XXXX입니다. 문의사항은 여기로~!");
+}
+</script>
+</body>
+</html>

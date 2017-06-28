@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:hint="타이틀을 입력해주세요."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_projectwrite2" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:id="@+id/image_projectwrite2"
+        android:onClick="onClick"/>
+
+    <EditText
+        android:hint="상세 내용을 입력해주세요."
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/content_projectwrite2" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="10">
+
+        <TextView
+            android:text="취소"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancel_projectwrite2"
+            android:onClick="onClick"
+            android:gravity="center"
+            android:layout_weight="5"/>
+
+        <TextView
+            android:text="등록"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/send_projectwrite2"
+            android:onClick="onClick"
+            android:gravity="center"
+            android:layout_weight="5"/>
+    </LinearLayout>
+</LinearLayout>

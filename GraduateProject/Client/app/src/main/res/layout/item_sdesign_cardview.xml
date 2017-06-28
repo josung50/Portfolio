@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_margin="2dp">
+
+    <ImageView
+        android:layout_height="50dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/imageView_sdesign_cardview"
+        android:scaleType="fitXY"
+        android:layout_width="50dp" />
+
+</RelativeLayout>

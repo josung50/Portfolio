@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/messagein_left"
+        android:layout_margin="3dp">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/messagein_left_content"
+            android:gravity="left"
+            android:layout_gravity="left"
+            android:visibility="gone"
+            android:background="@color/yellow"/>
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/messagein_left_time"
+            android:gravity="left"
+            android:layout_gravity="left"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/messagein_right"
+        android:layout_margin="3dp">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/messagein_right_content"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:background="@color/color_orange"
+            android:visibility="gone" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/messagein_right_time"
+            android:layout_gravity="right"
+            android:gravity="right"
+
+            android:visibility="gone" />
+    </LinearLayout>
+</RelativeLayout>

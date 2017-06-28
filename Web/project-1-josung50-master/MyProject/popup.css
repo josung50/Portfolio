@@ -1,0 +1,44 @@
+body{
+	margin-left:5%;
+	margin-right:5%;
+	background-color:ghostwhite;
+}
+Ingredients{
+	display:flow-root;
+}
+Ingredients h2{
+	margin-bottom:0px;
+}
+Steps{
+	display:block;
+	height:auto;
+}
+Steps img{
+	width:600;
+	margin-bottom:30;
+}
+ul{
+	float:left;
+	display:inline-block;
+	list-style-type:none;
+	margin-right:5%;
+	margin-left:5%;
+}
+ul li{
+	margin-left:20;
+	border-bottom:1px solid gray;
+	margin-bottom:30;
+}
+.foodstuffsName{
+	text-align:left;
+	margin-right:50;
+}
+.foodstuffsEA{
+	float:right;
+}
+ol {
+	display:block;
+	list-style-type:1;
+ol li{
+	margin-bottom:100px;
+}

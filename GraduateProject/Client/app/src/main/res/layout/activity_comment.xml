@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+
+
+    android:layout_height="match_parent"
+    android:weightSum="100">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_weight="10"
+        android:layout_height="30dp">
+
+        <TextView
+            android:text="좋아요 수 : "
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/comment_likenumber"
+            android:layout_weight="50"
+            android:visibility="invisible" />
+
+        <TextView
+            android:text="댓글 수 :"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/comment_commentnumber"
+            android:layout_weight="50"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="80">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerViewComment"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/comment_editcomment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:hint="댓글을 입력해주세요." />
+
+        <Button
+            android:id="@+id/comment_submit"
+            android:layout_width="56dp"
+            android:layout_height="49dp"
+            android:background="@drawable/send"
+            android:onClick="submit"
+            android:text="" />
+    </LinearLayout>
+
+</LinearLayout>

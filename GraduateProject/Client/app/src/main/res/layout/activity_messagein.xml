@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+
+    android:background="@color/background"
+
+    android:weightSum="100">
+
+
+
+    <TextView
+
+        android:text="TextView"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+
+        android:id="@+id/who_messagein"
+
+        android:layout_weight="88"/>
+
+
+
+    <android.support.v7.widget.RecyclerView
+
+        android:layout_width="match_parent"
+
+        android:id="@+id/recyclerViewMessageIn"
+
+        android:layout_margin="2dp"
+
+        android:layout_height="match_parent"
+
+        android:layout_weight="12"/>
+
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:layout_weight="10"
+
+        android:orientation="horizontal"
+
+        android:weightSum="10">
+
+
+
+        <EditText
+
+            android:id="@+id/message_messagein"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_weight="9.32"
+
+            android:windowSoftInputMode="adjustResize" />
+
+
+
+        <Button
+
+            android:id="@+id/send_messagein"
+
+            android:layout_width="34dp"
+
+            android:layout_height="29dp"
+
+            android:background="@drawable/send"
+
+            android:gravity="center"
+
+            android:onClick="onClick"
+
+            android:layout_weight="0.39" />
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

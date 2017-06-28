@@ -1,0 +1,171 @@
+TABLE_NAME
+
+t_admin:이것은 관리자 정보 
+	no->아이디
+	admin_id->관리자 id
+	admin_pw->관리자 pw
+
+t_alarm:이것은 알람
+	seq->아이디
+	member_seq->멤버 아이디
+	contents->알람 내용
+	resister_time->등록 시간
+	action_uri->몰라 내용 없음
+	confirm_time->확인 시간
+	actor_seq->나에게 알람 준사람 인것 같음
+
+t_category:이것은 카테고리
+	   category_code->카테고리 id
+	   depth->카테고리 depth
+	   category_name->카테고리 이름
+
+t_contact:contact us 종호가 필요없대
+
+t_design_preview_image:design_work_seq->이것은 디자인 id
+		       seq->이건 그냥 넘버링
+		       file_uri->디자인 안에 파일경로(썸네일말고)
+		       file_name->파일 이름
+		
+			=> 각 행이 디자인 id에 따른 파일들을 포함하고 있음.
+t_design_work:seq->id
+	      view_cnt->사람들이 본 횟수
+	      title->디자인 제목
+	      license->라이센스 허용(000,001, 이런식으로 허용 된것이 1)
+	      point->포인트
+	      thumb_uri->썸네일 파일경로
+
+t_design_work_category:design_work_seq->디자인 id
+		       category_code->카테고리 구분코드
+		       resister_Time->등록 시간
+t_design_work_comment:seq->넘버링
+		      design_work_seq->디자인 id
+		      member_seq->멤버 id
+		      contents->댓글 내용
+		      register_time->등록 시간
+t_design_work_file:design_work_seq->디자인 id
+		   file_uri->오픈소스 파일 경로
+		   filename->오픈소스 파일이름
+t_design_work_like:design_work_seq->디자인 id
+		  member_seq->멤버 id
+		  register_time->좋아요한 시간
+t_design_work_origin->비엇음 뭔지ㅗ몰라
+
+t_member:seq->넘버링
+	 email->멤버 이메일(아이디)
+	 passwd->멤버 패스워드(암호화됨)
+	 uname->유저 닉네임(이름)
+	 image_url->유저 프로필 사진 경로
+	 comments->자기소개 멘트
+	 member_type->디자이너인지 제작자인지(00,01,11),
+	 point->포인트 몇가지고잇는지
+	 fb_access_token->먼지몰룸
+	 register_time->유저 회원가입 시간
+	 update_time->최신 정보 변경 시간
+	 sido_seq->뭘라
+	 last_login->최종 로그인 시간
+t_member_category:member_seq->멤버 id
+		  category_code->유저가 등록한 작품의 카테고리 코드
+		  register_time->등록 시간
+t_order:design_work_seq->디자인 id
+	register_time->구매 시간
+	point->구매 포인트
+	delivery_info->받는사람 정보(배송 정보)
+	status->눌임 몰라
+	member_seq->멤버 id(구매한인간)
+	seq->넘버링
+t_pgroup:gruop_name->그룹 이름
+	 seq->넘버링
+	 member_seq->그룹장 id
+	 register_time->그룹 만든 시간
+	 update_time->그룹 정보 바꾼시간
+t_pgroup_project:project_group_seq->그룹 아이디
+		 project_seq->프로젝트 아이디
+		 register_time->그룹에서 프로젝트 등록한 시간
+t_pgroup_project_req:아몰랑
+t_point_history:sign->판매,구매 표시(S->판매,C->구매)
+		amount->포인트 양
+		accum_amount->남은 포인트 양
+		member_seq->맴버 아이디
+		order_seq->오더 아디
+		seq->넘버링
+		comments->몰랑
+t_project:public_yn->프로젝트 공개여부(y,n)
+	  project_name->프로젝트 이름
+	  progress_status->프로젝트 진행여부
+	  seq->넘버링
+	  file_url->프로젝트 섬네일 주소
+	  register_time->등록 시간
+	  update_time->수정 시간
+	  owner_seq->그룹장 id
+	  file_name->섬네일 파일이름
+	  del_flag->???????????
+t_project_category: category_code->프로젝트 카테고리 코드
+		    project_seq->프로젝트 아이디
+		    register_time->등록 시간
+t_project_member: member_seq->프로젝트 멤버 아이디
+		  project_seq->프로젝트 아이디
+		  register_time->프로젝트에 멤버가 등록된 시간
+t_project_subject: project_seq->프로젝트 아이디
+		   seq->넘버링
+		   subject_name:->기둥(주제,컬럼) 제목
+		   member_seq->등록한 멤버 아이디
+		   register_time->등록 시간
+t_project_work: title->프로젝트 주제 안에 들어가는놈 제목
+		contents->프로젝트 주제 안에 들어가는놈 설명
+		seq->넘버링
+		project_subject_seq->프로젝트 주제 아이디
+		member_seq->등록한 멤버 아이디
+		last_ver->버전 표시
+		del_flag->뭔데이게 지울수 있는 권한인가
+		thumb_uri->썸네일 파일 경로
+t_project_work_comment:member_seq->멤버 아이디
+		       contents->코멘트 내용
+		       seq->넘버링
+		       register_time->댓글 등록 시간
+		       project_work_seq->프로젝트 주제안에 들어가는놈 아이디
+t_project_work_like:member_seq->멤버 아이디
+		    project_work_seq->프로젝트 주제안에 들어가는놈 아이디
+		    register_time->좋아요한 시간
+t_project_work_member:member_seq->멤버 아이디
+		      project_work_seq->프로젝트 주제안에 들어가는놈 아이디
+		      register_time->등록 시간
+
+t_project_work_ver:project_work_seq->프로젝트 주제안에 들어가는놈 아이디
+		   seq->넘버링
+		   ver->버전
+		   file_uri->파일 경로
+		   register_time->등록 시간
+		   filename->파일 이름
+t_request_board:board_type->디자이너인지 제작자인지, (D,P)
+		title->게시판 제목
+		contents->글 내용
+		seq->글 id
+		member_seq->등록한 멤버 아이디
+		register_time->등록 시간
+		update_time->수정 시간
+t_request_board_category:board_seq->게시글 id
+			 category_code->카테고리 코드
+t_request_board_comment:member_seq->멤버 id
+			 board_seq->게시글 id
+			 contents->댓글 내용
+ 			 seq->댓글 id
+			 register_time->등록 시간
+t_request_board_file:board_seq->게시글 아이디
+		     seq->파일 아이디
+		     filename->파일 이름
+	 	     file_url->파일 경로
+		     register_time->등록 경로
+t_stat_activities:이건 모야
+
+t_talk: seq->쪽지 id
+	contents->쪽지 내용
+	recieve_seq->받는사람 멤버 아디
+	send_seq->보낸사람 멤버 아디
+	register_time->보낸 시간
+	confirm_time->확인 시간
+t_zip_code:seq->id
+	   sido->지역이름	
+
+
+
+강의 동영상에 포함된 슬라이드 쇼의 내용을 사용자가 파악하기 쉽도록 흐린 슬라이드 부sdafjadflasjdflsa일ㄴㅁㅇㄹsadfsadlfkasjdlfasjdfk

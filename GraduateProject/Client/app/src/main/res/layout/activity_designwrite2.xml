@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button4"
+            android:layout_gravity="left"
+            android:layout_weight="20"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="7dp"
+            android:textSize="15dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:text="이전"
+            android:onClick="onClick"/>
+
+        <TextView
+            android:text="새 게시물"
+            android:layout_height="wrap_content"
+            android:id="@+id/designwrite2_back"
+            android:elevation="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="60"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/designwrite2_send"
+            android:layout_gravity="right"
+            android:layout_weight="20"
+            android:gravity="right"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="7dp"
+            android:textSize="15dp"
+            android:text="공유하기"
+            android:textColor="@android:color/holo_blue_dark"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/designwrite2_title"
+        android:layout_height="wrap_content"
+        android:hint="디자인 타이틀을 입력하세요." />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/layout_border_all"
+        android:layout_marginBottom="10dp">
+
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:id="@+id/designwrite2_profileimg"
+            android:layout_gravity="center" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/designwrite2_content"
+            android:hint="설명추가..."
+            android:textSize="10dp"/>
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/recyclerViewDesignWrite2_tag"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_gray">
+    </LinearLayout>
+
+    <Button
+        android:text="# 태그 추가"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/designwrite2_addtag"
+        android:background="@android:color/transparent"
+        android:onClick="onClick"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_gray">
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:background="@drawable/layout_border_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerViewDesignWrite2"/>
+
+
+
+</LinearLayout>

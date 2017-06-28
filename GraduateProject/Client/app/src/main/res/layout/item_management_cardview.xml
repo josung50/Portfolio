@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.ramotion.foldingcell.FoldingCell
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/folding_cell_management"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/color_white">
+        ​
+        ​
+
+        <FrameLayout
+            android:id="@+id/cell_content_view_management"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="450dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:background="@drawable/head_img">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/imageView12_management"
+                            app:srcCompat="@drawable/portfolio_resizing" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentStart="true">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:text="Uploads"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView14_management"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:text="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView18_management"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textColor="@color/color_gray"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:text="Like"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView13_management"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:text="222"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView19_management"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textColor="@color/color_gray"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:text="View"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView11_management"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:text="4444"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView20_management"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textColor="@color/color_gray"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp">
+
+                            <TextView
+                                android:text="Who"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView21_management" />
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_below="@+id/textView21"
+                                android:layout_marginTop="5dp">
+
+                                <ImageView
+                                    app:srcCompat="@mipmap/ic_launcher"
+                                    android:id="@+id/profileimg_management_cardview_in"
+                                    android:scaleType="fitXY"
+                                    android:layout_height="70dp"
+                                    android:layout_width="70dp" />
+
+                                <RelativeLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp">
+
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:weightSum="10">
+
+                                        <TextView
+                                            android:text="Edward Norton"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:id="@+id/nickName_management_cardview_in"
+                                            android:textStyle="bold"
+                                            android:textSize="15dp"
+                                            android:layout_weight="5" />
+
+                                        <TextView
+                                            android:text="Architecture"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:id="@+id/field_management_cardview_in"
+                                            android:textStyle="bold"
+                                            android:textSize="15dp"
+                                            android:layout_weight="5"/>
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:text="This is test self-introduction"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:id="@+id/content_management_cardview_in"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_marginTop="20dp" />
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp">
+
+                            <TextView
+                                android:text="Uploads"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView22_management" />
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_below="@+id/textView22_management"
+                                android:layout_marginTop="5dp"
+                                android:weightSum="100">
+
+                                <ImageView
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:id="@+id/upload1_management_cardview_in"
+                                    android:layout_weight="23"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp" />
+
+                                <ImageView
+                                    android:id="@+id/upload2_management_cardview_in"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="23"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp" />
+
+                                <ImageView
+                                    android:id="@+id/upload3_management_cardview_in"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="23"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp" />
+
+                                <ImageView
+                                    android:id="@+id/upload4_management_cardview_in"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="23"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp" />
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="wrap_content"
+                                    app:srcCompat="@drawable/arrow"
+                                    android:id="@+id/arrow_management_cardview_in"
+                                    android:layout_gravity="center_vertical|center"
+                                    android:layout_weight="8"/>
+
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/contactme3"
+                            android:id="@+id/imageView11_management"
+                            android:layout_margin="5dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/content_management_cardview" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/cell_title_view_management"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            android:layout_margin="3dp"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/imageView_management_cardview" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="TextView"
+                        android:layout_height="50dp"
+                        android:id="@+id/nickName_management_cardview"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="141dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/field_management_cardview"
+                            android:layout_weight="0.38" />
+
+                        <TextView
+                            android:text="탈퇴"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/out_management_cardview"
+                            android:layout_weight="0.38"
+                            android:gravity="center"
+                            android:onClick="onClick"
+                            android:visibility="invisible" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="23dp"
+                            android:layout_height="match_parent"
+                            app:srcCompat="@drawable/upload"
+                            android:id="@+id/imageView3" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/uploadCount_management_cardview"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="23dp"
+                            android:layout_height="match_parent"
+                            app:srcCompat="@drawable/like"
+                            android:id="@+id/imageView4" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/likeCount_management_cardview"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="23dp"
+                            android:layout_height="match_parent"
+                            app:srcCompat="@drawable/view"
+                            android:id="@+id/imageView5" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/viewCount_management_cardview"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+        ​
+    </com.ramotion.foldingcell.FoldingCell>
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:title="Search"/>
+
+    <item android:title="등록">
+        <item
+            android:id="@+id/design_write_nav"
+            android:icon="@drawable/ic_menu_share"
+            android:title="디자인 등록" />
+        <item
+            android:id="@+id/project_write_nav"
+            android:icon="@drawable/ic_menu_share"
+            android:title="프로젝트 등록" />
+    </item>
+</menu>

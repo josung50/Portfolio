@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="design_spinner">
+        <item>전체</item>
+        <item>패션</item>
+        <item>제품</item>
+        <item>커뮤니케이션</item>
+        <item>공예</item>
+        <item>에터테인먼트</item>
+        <item>공간</item>
+        <item>새분야</item>
+    </string-array>
+</resources>

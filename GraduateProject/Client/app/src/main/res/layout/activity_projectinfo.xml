@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/projectinfo_frame">
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ProjectSpinner"
+        android:gravity="end"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_menu_camera"
+        android:id="@+id/fab2"
+        android:layout_above="@+id/fab1"
+        android:layout_alignStart="@+id/fab1"
+        android:layout_marginBottom="22dp"
+        android:visibility="invisible"
+        android:onClick="onClickFab"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_menu_gallery"
+        android:id="@+id/fab3"
+        android:layout_marginBottom="22dp"
+        android:layout_above="@+id/fab2"
+        android:layout_alignStart="@+id/fab2"
+        android:visibility="invisible"
+        android:onClick="onClickFab"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_menu_send"
+        android:id="@+id/fab4"
+        android:layout_above="@+id/fab3"
+        android:layout_alignStart="@+id/fab3"
+        android:layout_marginBottom="22dp"
+        android:visibility="invisible"
+        android:onClick="onClickFab"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/fab5"
+        android:layout_above="@+id/fab4"
+        android:layout_alignStart="@+id/fab4"
+        android:visibility="invisible"
+        android:onClick="onClickFab"
+        android:layout_marginBottom="22dp" />
+
+    <TextView
+        android:text="주제 수정"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textSubjectCorrect"
+        android:gravity="center"
+        android:layout_alignBottom="@+id/fab3"
+        android:layout_toStartOf="@+id/fab3"
+        android:layout_marginBottom="11dp"
+        android:visibility="invisible"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:text="주제 삭제"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textSubjectDelete"
+        android:layout_alignBottom="@+id/fab2"
+        android:layout_toStartOf="@+id/fab2"
+        android:layout_marginBottom="11dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:text="주제 추가"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textSubjectAdd"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:layout_alignBottom="@+id/fab4"
+        android:layout_toStartOf="@+id/fab4"
+        android:layout_marginBottom="11dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:text="멤버 관리"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMemeberManagement"
+        android:layout_alignBottom="@+id/fab5"
+        android:layout_toStartOf="@+id/fab5"
+        android:layout_marginBottom="11dp"
+        android:visibility="invisible" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:id="@+id/fab1"
+        android:layout_marginBottom="62dp"
+        android:onClick="onClickFab"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="주제를 등록해주세요."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SubjectTitle"
+        android:layout_alignBottom="@+id/ProjectSpinner"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ProjectSpinner"
+        android:id="@+id/recyclerViewProjectInfo"/>
+
+    <TextView
+        android:text="등록"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ADD_projectinfo"
+        android:layout_above="@+id/recyclerViewProjectInfo"
+        android:onClick="onClick"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

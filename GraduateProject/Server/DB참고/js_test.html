@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<body>
+<script type="text/javascript">
+
+    function dispList(selectList) {
+
+        var obj1 = document.getElementById("stu_list"); // 학생 리스트
+        var obj2 = document.getElementById("tea_list"); // 선생님 리스트
+
+
+        if( selectList == "2" ) { // 학생 리스트
+            obj1.style.display = "block";
+            obj2.style.display = "none";
+
+            alert(	obj.style.display ) ;
+
+        } else { // 선생님 리스트
+            obj1.style.display = "none";
+            obj2.style.display = "block";
+
+        }
+
+    }
+
+</script>
+
+<input type="radio" name="choose" id="student" onclick="dispList('2');"> list of stu
+<input type="radio" name="choose" id="teacher" onclick="dispList('1');"> list of tea
+<input type="radio" name="choose" id="professor" onclick="dispList('3');"> list of pro
+
+<br/>
+<br/>
+
+<div id="stu_list" style="display:none">
+    1. student 1 <br/>
+    2. student 2 <br/>
+    3. student 3 <br/>
+</div>
+
+<div id="tea_list" style="display:none">
+    1. teacher 1 <br/>
+    2. teacher 2 <br/>
+    3. teacher 3 <br/>
+</div>
+<div id = "pro_list" style = "display:none">
+    1. professor 1 <br/>
+    2. professor 2 <br/>
+    3. professor 3 <br/>
+</div>
+</body>
+</html>

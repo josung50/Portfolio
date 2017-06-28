@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.josungryong.graduateproject3.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <include layout="@layout/content_main" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:background="@android:color/transparent"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                android:layout_height="50dp"
+                android:layout_width="match_parent" />
+
+            <Button
+                android:text="Project"
+                android:id="@+id/ProjectButton"
+                tools:layout_anchorGravity="top|bottom"
+                android:autoText="false"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="110dp"
+                android:textStyle="italic"
+                android:textColor="@color/color_orange"
+                android:background="#00ff0000"
+                android:onClick="TabClick" />
+
+            <Button
+                android:text="Designer"
+                android:id="@+id/DesignerButton"
+                tools:layout_anchorGravity="top|bottom"
+                android:autoText="false"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_width="110dp"
+                android:textStyle="italic"
+                android:textColor="@color/color_orange"
+                android:background="#00ff0000"
+                android:onClick="TabClick"/>
+
+            <Button
+                android:text="Design"
+                android:id="@+id/DesignButton"
+                tools:layout_anchorGravity="top|bottom"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_width="110dp"
+                android:textStyle="italic"
+                android:textColor="@color/color_orange"
+                android:background="#00ff0000"
+                android:onClick="TabClick"
+                android:autoText="false" />
+
+            <Spinner
+                android:layout_width="110dp"
+                android:id="@+id/DesignSpinner"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:gravity="right|start" />
+
+            <Spinner
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:id="@+id/DesignerSpinner"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/fragment_container"
+            android:gravity="bottom"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_alignParentStart="true">
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:id="@+id/title_projectwrite"
+        android:hint="프로젝트 제목을 입력해주세요."
+        android:layout_marginTop="19dp"
+        android:layout_width="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:inputType="text"/>
+
+    <ImageView
+        android:id="@+id/thumbnail_projectwrite"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/title_projectwrite"
+        android:layout_alignStart="@+id/title_projectwrite"
+        android:onClick="onClick"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="320dp"
+        android:layout_below="@+id/thumbnail_projectwrite"
+        android:id="@+id/linearlayouttemp"
+        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="멤버추가"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView15"
+            android:gravity="center"/>
+
+        <EditText
+            android:layout_height="match_parent"
+            android:id="@+id/addmembertext_projectwrite"
+            android:layout_width="200dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:inputType="textEmailAddress"/>
+
+        <Button
+            android:text="추가"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/addmemberbutton_projectwrite"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="200dp"
+        android:id="@+id/recyclerViewProjectWrite"
+        android:layout_above="@+id/send_projectwrite"
+        android:layout_alignEnd="@+id/thumbnail_projectwrite"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="0.19"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:text="등록"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClick"
+        android:id="@+id/send_projectwrite"
+        android:layout_weight="1" />
+
+</LinearLayout>

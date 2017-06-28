@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="depth1">
+        <item>전체</item>
+        <item>패션</item>
+        <item>제품</item>
+        <item>커뮤니케이션</item>
+        <item>공예</item>
+        <item>공간</item>
+        <item>엔터테인먼트</item>
+        <item>새분야</item>
+    </string-array>
+
+    <string-array name="전체">
+        <item>전체</item>
+    </string-array>
+    <string-array name="패션">
+        <item>스마트패션</item>
+        <item>의상</item>
+        <item>액세서리</item>
+        <item>패션모듈</item>
+
+    </string-array>
+    <string-array name="제품">
+        <item>스마트카</item>
+        <item>로봇</item>
+        <item>기계/기기/기구</item>
+        <item>센서모듈</item>
+    </string-array>
+    <string-array name="커뮤니케이션">
+        <item>UI/UX</item>
+        <item>광고</item>
+        <item>웹</item>
+        <item>영상</item>
+        <item>타이포그래피</item>
+    </string-array>
+    <string-array name="공예">
+        <item>금속 공예</item>
+        <item>도자 공예</item>
+        <item>목공예</item>
+        <item>수공예</item>
+    </string-array>
+    <string-array name="공간">
+        <item>스마트시티</item>
+        <item>건축</item>
+        <item>인테리어</item>
+        <item>환경</item>
+    </string-array>
+    <string-array name="엔터테인먼트">
+        <item>스마트미디어</item>
+        <item>게임</item>
+        <item>디지털컨텐츠</item>
+        <item>서비스</item>
+    </string-array>
+    <string-array name="새분야">
+    </string-array>
+
+    <string-array name="residence">
+        <item>전체</item>
+        <item>강원도</item>
+        <item>경기도</item>
+        <item>경상남도</item>
+        <item>경상북도</item>
+        <item>광주광역시</item>
+        <item>대구광역시</item>
+        <item>대전광역시</item>
+        <item>부산광역시</item>
+        <item>서울특별시</item>
+        <item>세종특별자치시</item>
+        <item>울산광역시</item>
+        <item>인천광역시</item>
+        <item>전라남도</item>
+        <item>전라북도</item>
+        <item>제주특별자치도</item>
+        <item>충청남도</item>
+        <item>충청북도</item>
+    </string-array>
+
+
+
+</resources>

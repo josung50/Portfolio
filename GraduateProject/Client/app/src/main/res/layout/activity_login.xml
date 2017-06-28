@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fdf2eed9">
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:id="@+id/imageView8"
+        android:layout_weight="0.33"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/loginaccount"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/imageView8"
+        android:layout_alignParentStart="true"
+        android:gravity="center">
+
+
+        <EditText
+            android:id="@+id/ID_OSD"
+            android:layout_width="292dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/linearLayout5"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/background_light"
+            android:hint="Email"
+            android:textStyle="italic"
+            android:drawableRight="@drawable/email"
+            android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:id="@+id/Password_OSD"
+            android:layout_width="290dp"
+            android:layout_height="40dp"
+            android:layout_alignEnd="@+id/ID_OSD"
+            android:layout_alignStart="@+id/ID_OSD"
+            android:layout_below="@+id/ID_OSD"
+            android:layout_marginTop="17dp"
+            android:background="@android:color/background_light"
+            android:hint="password"
+            android:textStyle="italic"
+            android:drawableRight="@drawable/lock"
+            android:inputType="textPassword"
+            />
+
+        <Button
+            android:id="@+id/Login"
+            android:layout_width="291dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/Password_OSD"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30px"
+            android:background="#fbf4b435"
+            android:text="login"
+            android:textColor="@color/color_white"
+
+            android:textStyle="italic"
+            android:onClick="onClick"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout">
+
+        <Button
+            android:id="@+id/Join"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:background="@drawable/logi"
+            android:layout_weight="0.2"
+            android:onClick="onClick"/>
+
+        <Button
+            android:id="@+id/FacBookLoginButton"
+            android:layout_width="81dp"
+            android:layout_height="85dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/facelog"
+            android:onClick="onClick"
+            android:layout_weight="0.09"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

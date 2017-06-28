@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+
+    <LinearLayout
+        android:id="@+id/image_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="181dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/two" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+
+                <EditText
+                    android:id="@+id/nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/next2"
+                    android:layout_alignEnd="@+id/next2"
+                    android:layout_marginBottom="12dp"
+                    android:ems="10"
+                    android:hint="닉네임"
+                    android:inputType="textPersonName" />
+
+                <Button
+                    android:id="@+id/nickname_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="nickname"
+                    android:text="닉네임 중복 확인"
+                    android:layout_alignBottom="@+id/nick"
+                    android:layout_toEndOf="@+id/nick" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="43dp"
+                    android:layout_toEndOf="@+id/spinner2" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/spinner"
+                    android:layout_alignEnd="@+id/nick"
+                    android:layout_alignTop="@+id/spinner" />
+
+                <ImageView
+                    android:id="@+id/profile"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignStart="@+id/nick"
+                    android:layout_marginStart="11dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/next2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="22dp"
+                    android:layout_marginStart="137dp"
+                    android:onClick="next2"
+                    android:text="다음" />
+
+                <Button
+                    android:id="@+id/profile_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignStart="@+id/nickname_confirm"
+                    android:layout_marginTop="48dp"
+                    android:onClick="onClick"
+                    android:text="프로필 사진 등록" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

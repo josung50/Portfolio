@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.josungryong.graduateproject3">
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="OSD"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Login"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+
+        <activity
+            android:name=".Mypage.Mypage"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity android:name=".Project_Fragment.ProjectInfo"
+            android:theme="@style/AppTheme.NoActionBar"></activity> // 프로젝트 상세페이지
+        <activity android:name=".Design_Fragment.DesignInfo"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity> // 디자인 상세페이지
+
+        <activity android:name=".Project_Fragment.ProjectInfo2"
+            android:theme="@style/AppTheme.NoActionBar"></activity> // 프로젝트 상세 상세 페이지
+
+        <activity android:name=".Project_Fragment.ProjectWrite"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity> // 프로젝트 생성 페이지
+
+        <activity android:name=".Project_Fragment.ProjectWrite2"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity> // 프로젝트 주제 - 디자인 생성 페이지
+
+        <activity android:name=".TestServer"></activity>
+
+        <activity android:name=".Design_Fragment.DesignWrite"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"></activity> // 디자인 등록페이지1
+
+        <activity android:name=".Design_Fragment.DesignWrite2"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity> // 디자인 등록페이지2
+
+        <activity android:name=".Comment"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+
+        <activity android:name=".Mypage.Mypage"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".Project_Fragment.MemeberManagement.Management"></activity>
+        <activity android:name=".Message.Message_Main"></activity>
+        <activity android:name=".Message.MessageIn"></activity>
+        <activity android:name=".Designer_Fragment.DesignerIn"></activity>
+
+
+        <!--회원가입-->
+        <activity android:name=".join1"></activity>
+        <activity android:name=".join2"></activity>
+        <activity android:name=".join3"></activity>
+        <activity android:name=".join4"></activity>
+        <!--회원가입-->
+
+        /* 검색 */
+        <activity android:name=".Search.Search_main">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        // 디자인 등록
+    </application>
+
+</manifest>
