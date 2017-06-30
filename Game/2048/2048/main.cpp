@@ -4,6 +4,11 @@
 #include<time.h>
 #include<math.h>
 
+#define LEFT 75
+#define RIGHT 77
+#define UP 72
+#define DOWN 80
+
 #define TRUE 1
 #define FALSE 0
 
@@ -19,8 +24,10 @@ void draw44();
 void draw44_background();
 void newnumber44();
 int gameover44_check();
+void moving44(int key);
 
 void draw88();
+
 void InitBoard();
 void gotoxy(int x, int y);
 
@@ -36,14 +43,20 @@ void main() {
 	int key;
 	while (1) {
 		Menu();
-		if (select_menu_key == 49) {
+		if (select_menu_key == 49) { // 4x4
 			while (1) {
 				draw44();
 				key = getch();
 				if (key == 114) { // R == 114 , reset
 					break;
 				}
+				else {
+					key = getch();; // 방향키의 경우 2번 getch를 받아야 한다.
+					if (key == LEFT || key == RIGHT || key == DOWN || key == UP)
+						moving44(key);
+				}
 
+				/* Menu 호출을 하기위해 break을 2번 건다. 첫 번째 break는 r을 계속적으로 입력받기 위한 break.*/
 				if (gameover44_check() == 0) { // 0:game_over , 1:not_over
 					while (1) {
 						key = getch();
@@ -56,6 +69,9 @@ void main() {
 
 				newnumber44();
 			}
+		}
+
+		else if (select_menu_key == 50) { // 8x8
 		}
 	}
 }
@@ -108,10 +124,18 @@ void InitBoard() {
 		for (int col = 0; col < 4; col++)
 			board44[row][col] = 0;
 	}
-	board44[2][3] = 8;
+
+	
+	board44[0][3] = 4;
+	board44[0][2] = 4;
+	board44[0][1] = 2;
+	board44[0][0] = 4;
+	board44[1][1] = 4;
 	board44[1][2] = 4;
-	board44[1][3] = 16;
-	board44[1][1] = 2;
+	board44[2][0] = 8;
+	board44[2][2] = 4;
+	board44[2][1] = 4;
+
 	//board44[1][0] = 1024;
 
 	// 8*8 보드 초기화
@@ -232,6 +256,53 @@ int gameover44_check() {
 
 void draw88() {
 
+}
+
+void moving44(int key) {
+	int row = 0; int col = 0; int temp_col = -1; int temp_value;
+
+	switch (key) {
+
+	case LEFT:
+		/* 합치기 */
+		for (row = 0; row < 4; row++) {
+			for (int i = 0; i < 4; i++) {
+				if (board44[row][i] == 0)
+					continue;
+				else {
+					for (int j = i + 1; j < 4; j++) {
+						if (board44[row][j] == 0)
+							continue;
+						else if (board44[row][i] != board44[row][j]) {
+							i = j-1;
+							break;
+						}
+						else if (board44[row][i] == board44[row][j]) {
+							board44[row][i] = board44[row][i] * 2;
+							board44[row][j] = 0;
+							i = j-1;
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		/* 옮기기 */
+		for (row = 0; row < 4; row++) {
+			for (int i = 0; i < 4; i++) {
+
+			}
+		}
+		break;
+	case RIGHT:
+		break;
+	case DOWN:
+		break;
+	case UP:
+		break;	
+
+	}
 }
 
 void gotoxy(int x, int y) { //모니터상의 x,y 좌표로 이동시키는 함수 
