@@ -3,6 +3,7 @@
 #include<Windows.h>
 #include<time.h>
 #include<math.h>
+#include<fstream>
 
 #define LEFT 75
 #define RIGHT 77
@@ -30,11 +31,15 @@ void draw88();
 
 void InitBoard();
 void gotoxy(int x, int y);
+int load();
+void save();
+void back();
 
 typedef enum { NOCURSOR, SOLIDCURSOR, NORMALCURSOR }CURSOR_TYPE;
 void setcursortype(CURSOR_TYPE);
 
 int board44[4][4];
+int board44_backup[4][4];
 int board88[8][8];
 int select_menu_key;
 int score;
@@ -43,6 +48,9 @@ void main() {
 	int key;
 	while (1) {
 		Menu();
+		if (select_menu_key == 27) { // quit
+			return;
+		}
 		if (select_menu_key == 49) { // 4x4
 			while (1) {
 				draw44();
@@ -50,10 +58,23 @@ void main() {
 				if (key == 114) { // R == 114 , reset
 					break;
 				}
+				else if (key == 27) { // quit
+					gotoxy(MAP_ADJ_X + 30, MAP_ADJ_Y + 11);
+					return;
+				}
+				else if (key == 115) { // save
+					save();
+				}
+				else if (key == 8) { // back
+					back();
+				}
 				else {
 					key = getch();; // 방향키의 경우 2번 getch를 받아야 한다.
-					if (key == LEFT || key == RIGHT || key == DOWN || key == UP)
+					if (key == LEFT || key == RIGHT || key == DOWN || key == UP) {
 						moving44(key);
+						newnumber44();
+					}
+					else continue;
 				}
 
 				/* Menu 호출을 하기위해 break을 2번 건다. 첫 번째 break는 r을 계속적으로 입력받기 위한 break.*/
@@ -66,11 +87,8 @@ void main() {
 					if (key == 114)
 						break;
 				}
-
-				newnumber44();
 			}
 		}
-
 		else if (select_menu_key == 50) { // 8x8
 		}
 	}
@@ -91,17 +109,18 @@ void Menu() {
 	cout << "  └─└┘  │└┘";
 	gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y);
 	cout << "1 : Classic - 4 X 4";
+	//gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y + 2);
+	//cout << "2 : Classic - 8 X 8";
 	gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y + 2);
-	cout << "2 : Classic - 8 X 8";
-	gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y + 4);
 	cout << " ◇ ←,→,↑,↓ : Move";
+	gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y + 4);
+	cout << " ◇ ESC : Quit , L : Load";
 	gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y + 6);
-	cout << " ◇ ESC : Quit";
-	gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y + 8);
-	cout << " ◇ Insert 1 or 2 please. : ";
+	cout << " ◇ Insert 1 please.";
+	gotoxy(MAP_ADJ_X + 15, MAP_ADJ_Y + 8);
 
 	while (1) {
-		select_menu_key = getch(); // 1 == 49 , 2 == 50;
+		select_menu_key = getch(); // 1 == 49 , 2 == 50; , quit == 27; , load == 108
 
 		if (select_menu_key == 49) {
 			draw44_background();
@@ -110,6 +129,19 @@ void Menu() {
 		else if (select_menu_key == 50) {
 			draw88();
 			break;
+		}
+		else if (select_menu_key == 27) {
+			return;
+		}
+		else if (select_menu_key == 108) {
+			if (load()) {
+				for (int i = 0; i < 4; i++)
+					for (int j = 0; j < 4; j++)
+						board44_backup[i][j] = board44[i][j];
+				draw44_background();
+				select_menu_key = 49;
+				return;
+			}
 		}
 		else
 			continue;
@@ -125,16 +157,19 @@ void InitBoard() {
 			board44[row][col] = 0;
 	}
 
-	
+	/*
 	board44[0][3] = 4;
 	board44[0][2] = 4;
 	board44[0][1] = 2;
 	board44[0][0] = 4;
-	board44[1][1] = 4;
+	board44[1][0] = 2;
+	board44[1][1] = 2;
 	board44[1][2] = 4;
+	board44[1][3] = 4;
 	board44[2][0] = 8;
 	board44[2][2] = 4;
 	board44[2][1] = 4;
+	*/
 
 	//board44[1][0] = 1024;
 
@@ -170,6 +205,8 @@ void draw44() {
 			}
 		}
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+		gotoxy(MAP_ADJ_X + 30 , MAP_ADJ_Y + 10);
+		cout << "SCORE :" << score;
 	}
 }
 
@@ -204,7 +241,7 @@ void draw44_background() {
 	gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y + 9);
 	cout << "│                        │";
 	gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y + 10);
-	cout << "│                        │    SCORE :" << score;
+	cout << "│                        │";
 	gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y + 11);
 	cout << "│                        │";
 	gotoxy(MAP_ADJ_X - 2, MAP_ADJ_Y + 12);
@@ -259,10 +296,14 @@ void draw88() {
 }
 
 void moving44(int key) {
-	int row = 0; int col = 0; int temp_col = -1; int temp_value;
+	int row = 0; int col = 0; int temp_col = -1; int temp_row = -1;
+
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 4; j++)
+			board44_backup[i][j] = board44[i][j];
 
 	switch (key) {
-
+	/* i = j - 1에 유의*/
 	case LEFT:
 		/* 합치기 */
 		for (row = 0; row < 4; row++) {
@@ -274,11 +315,12 @@ void moving44(int key) {
 						if (board44[row][j] == 0)
 							continue;
 						else if (board44[row][i] != board44[row][j]) {
-							i = j-1;
+							i = j - 1;
 							break;
 						}
 						else if (board44[row][i] == board44[row][j]) {
 							board44[row][i] = board44[row][i] * 2;
+							score += board44[row][i];
 							board44[row][j] = 0;
 							i = j-1;
 							break;
@@ -291,18 +333,194 @@ void moving44(int key) {
 		/* 옮기기 */
 		for (row = 0; row < 4; row++) {
 			for (int i = 0; i < 4; i++) {
-
+				temp_col = -1;
+				for (int j = i; j < 4; j++) {
+					if (board44[row][j] == 0 && temp_col < 0) {
+						temp_col = j;
+						continue;
+					}
+					if (board44[row][j] != 0 && temp_col >= 0) {
+						board44[row][temp_col] = board44[row][j];
+						board44[row][j] = 0;
+						break;
+					}
+				}
 			}
 		}
 		break;
+
+	/* i = j + 1에 유의 */
 	case RIGHT:
+		/* 합치기 */
+		for (row = 0; row < 4; row++) {
+			for (int i = 3; i >= 0; i--) {
+				if (board44[row][i] == 0)
+					continue;
+				else {
+					for (int j = i - 1; j >= 0; j--) {
+						if (board44[row][j] == 0)
+							continue;
+						else if (board44[row][i] != board44[row][j]) {
+							i = j + 1;
+							break;
+						}
+						else if (board44[row][i] == board44[row][j]) {
+							board44[row][i] = board44[row][i] * 2;
+							score += board44[row][i];
+							board44[row][j] = 0;
+							i = j;
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		/* 옮기기 */
+		for (row = 0; row < 4; row++) {
+			for (int i = 3; i >= 0; i--) {
+				temp_col = -1;
+				for (int j = i; j >= 0; j--) {
+					if (board44[row][j] == 0 && temp_col < 0) {
+						temp_col = j;
+						continue;
+					}
+					if (board44[row][j] != 0 && temp_col >= 0) {
+						board44[row][temp_col] = board44[row][j];
+						board44[row][j] = 0;
+						break;
+					}
+				}
+			}
+		}
 		break;
+
 	case DOWN:
+		/* 합치기 */
+		for (col = 0; col < 4; col++) {
+			for (int i = 3; i >= 0; i--) {
+				if (board44[i][col] == 0)
+					continue;
+				else {
+					for (int j = i - 1; j >= 0; j--) {
+						if (board44[j][col] == 0)
+							continue;
+						else if (board44[i][col] != board44[j][col]) {
+							i = j + 1;
+							break;
+						}
+						else if (board44[i][col] == board44[j][col]) {
+							board44[i][col] = board44[i][col] * 2;
+							score += board44[i][col];
+							board44[j][col] = 0;
+							i = j;
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		/* 옮기기 */
+		for (col = 0; col < 4; col++) {
+			for (int i = 3; i >= 0; i--) {
+				temp_row = -1;
+				for (int j = i; j >= 0; j--) {
+					if (board44[j][col] == 0 && temp_row < 0) {
+						temp_row = j;
+						continue;
+					}
+					if (board44[j][col] != 0 && temp_row >= 0) {
+						board44[temp_row][col] = board44[j][col];
+						board44[j][col] = 0;
+						break;
+					}
+				}
+			}
+		}
 		break;
+
 	case UP:
+		/* 합치기 */
+		for (col = 0; col < 4; col++) {
+			for (int i = 0; i < 4; i++) {
+				if (board44[i][col] == 0)
+					continue;
+				else {
+					for (int j = i + 1; j < 4; j++) {
+						if (board44[j][col] == 0)
+							continue;
+						else if (board44[i][col] != board44[j][col]) {
+							i = j - 1;
+							break;
+						}
+						else if (board44[i][col] == board44[j][col]) {
+							board44[i][col] = board44[i][col] * 2;
+							score += board44[i][col];
+							board44[j][col] = 0;
+							i = j - 1;
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		/* 옮기기 */
+		for (col = 0; col < 4; col++) {
+			for (int i = 0; i < 4; i++) {
+				temp_row = -1;
+				for (int j = i; j < 4; j++) {
+					if (board44[j][col] == 0 && temp_row < 0) {
+						temp_row = j;
+						continue;
+					}
+					if (board44[j][col] != 0 && temp_row >= 0) {
+						board44[temp_row][col] = board44[j][col];
+						board44[j][col] = 0;
+						break;
+					}
+				}
+			}
+		}
 		break;	
 
 	}
+}
+
+int load() {
+	ifstream ReadFile("data.txt");
+	if (ReadFile.is_open() == true) {
+		for (int i = 0; i < 4; i++)
+			for (int j = 0; j < 4; j++)
+				ReadFile >> board44[i][j];
+		ReadFile >> score;
+		ReadFile.close();
+		return 1;
+	}
+	else {
+		cout << "Open datafile failed.";
+		ReadFile.close();
+		return 0;
+	}
+}
+
+void save() {
+	ofstream WriteFile;
+	WriteFile.open("data.txt", ios_base::out);
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 4; j++)
+			WriteFile << board44[i][j] << " ";
+	WriteFile << score;
+	gotoxy(MAP_ADJ_X + 30, MAP_ADJ_Y + 11);
+	cout << "Save success.";
+	WriteFile.close();
+}
+
+void back() {
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 4; j++)
+			board44[i][j] = board44_backup[i][j];
 }
 
 void gotoxy(int x, int y) { //모니터상의 x,y 좌표로 이동시키는 함수 
