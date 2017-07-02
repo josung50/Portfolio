@@ -157,22 +157,6 @@ void InitBoard() {
 			board44[row][col] = 0;
 	}
 
-	/*
-	board44[0][3] = 4;
-	board44[0][2] = 4;
-	board44[0][1] = 2;
-	board44[0][0] = 4;
-	board44[1][0] = 2;
-	board44[1][1] = 2;
-	board44[1][2] = 4;
-	board44[1][3] = 4;
-	board44[2][0] = 8;
-	board44[2][2] = 4;
-	board44[2][1] = 4;
-	*/
-
-	//board44[1][0] = 1024;
-
 	// 8*8 보드 초기화
 	for (int row = 0; row < 8; row++) {
 		for (int col = 0; col < 8; col++)
@@ -298,12 +282,18 @@ void draw88() {
 void moving44(int key) {
 	int row = 0; int col = 0; int temp_col = -1; int temp_row = -1;
 
+	/* back을 위한 보드 저장 */
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 4; j++)
 			board44_backup[i][j] = board44[i][j];
 
 	switch (key) {
 	/* i = j - 1에 유의*/
+	/* 합치기 - 행 또는 열에서 보드가 0이 아닌 경우의 좌표를 저장, 
+	그 이후에 나오는 값 중 좌표에 저장한 값과 같으면 더하고 그렇지 않으면
+	새로 나온 값의 좌표를 새로 탐색을 시작하는 곳으로 저장*/
+	/* 옮기기 - 빈칸의 좌표를 저장, 값이 있는 곳을 저장하고 서로 swap을 한다.
+	이 후, 다음 인덱스부터 다시 탐색하여 반복*/
 	case LEFT:
 		/* 합치기 */
 		for (row = 0; row < 4; row++) {
@@ -548,7 +538,6 @@ void setcursortype(CURSOR_TYPE c)
 	}
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Curinfo);
 }
-
 
 /* 참고 문헌 , 블로그*/
 /* 커서 없애기 : http://sotooto.blogspot.kr/2010/05/setcursortype%EC%BB%A4%EC%84%9Conoff.html */
