@@ -1,0 +1,12 @@
+﻿  main.cpp
+c:\users\josungryong\documents\visual studio 2015\projects\snake game\snake game\main.cpp(54): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\conio.h(452): note: 'getch' 선언을 참조하십시오.
+c:\users\josungryong\documents\visual studio 2015\projects\snake game\snake game\main.cpp(57): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\conio.h(458): note: 'kbhit' 선언을 참조하십시오.
+c:\users\josungryong\documents\visual studio 2015\projects\snake game\snake game\main.cpp(73): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\conio.h(452): note: 'getch' 선언을 참조하십시오.
+c:\users\josungryong\documents\visual studio 2015\projects\snake game\snake game\main.cpp(352): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\conio.h(458): note: 'kbhit' 선언을 참조하십시오.
+c:\users\josungryong\documents\visual studio 2015\projects\snake game\snake game\main.cpp(369): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  snake game.vcxproj -> C:\Users\josungryong\Documents\Visual Studio 2015\Projects\snake game\Debug\snake game.exe
+  snake game.vcxproj -> C:\Users\josungryong\Documents\Visual Studio 2015\Projects\snake game\Debug\snake game.pdb (Full PDB)
