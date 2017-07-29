@@ -14,9 +14,20 @@ typedef struct point { int x; int y; };
 #define LEFT 75
 #define RIGHT 77
 #define QUIT 113
+#define RESET 114
 
 int life;
 int holding_time;
+int game_over_flag;
+int invincibility_status; // 별에 닿을 시 2초간 무적 상태
+
+/* 1~12로 while문을 돌 때마다 1씩 증가,
+drop()에서
+100로 나눈 나머지가 0일 때는 producing1
+200로 나눈 나머지가 0일 때는 producing2
+500로 나눈 나머지가 0일 때는 producing3
+1000로 나눈 나머지가 0일 때는 producing4 를 호출한다.*/
+int drop_level;
 
 void main_screen();
 void frame(); // 내부의 x 좌표는 10 ~ 68
@@ -24,15 +35,9 @@ int limit_area(int direct); // 벽 넘기방지
 void time_ac(); // 시간 계산
 
 void production_star(); // 별 생성 , 10 ~ 68 사이의 좌표에서 별을 생성하면 된다.
-void print_star(); // map에 별들을 그린다.
+void print_star(); // map에 별들을 그린다. 성능상의 문제로 drop()과 통합
 int production_star_time; // 0.1초마다 별 생성
 void drop(); // 별들을 떨구는 함수.
-
-/* 각 star_producing마다 떨어지는 속도의 차이가 있다.*/
-void star_producing1(); // 1 , 제일 빠르게 떨어진다.
-void star_producing2(); // 2
-void star_producing3(); // 3
-void star_producing4(); // 4 , 제일 느리게 떨어진다.
 
 void gotoxy(int x, int y);
 void setcursortype(CURSOR_TYPE c);
@@ -90,6 +95,21 @@ public:
 		gotoxy(right_leg.x, right_leg.y);
 		cout << "＼";
 	}
+
+	void human_cls() {
+		gotoxy(head.x, head.y);
+		cout << " ";
+		gotoxy(left_hand.x, left_hand.y);
+		cout << " ";
+		gotoxy(body.x, body.y);
+		cout << " ";
+		gotoxy(right_hand.x, right_hand.y);
+		cout << " ";
+		gotoxy(left_leg.x, left_leg.y);
+		cout << " ";
+		gotoxy(right_leg.x, right_leg.y);
+		cout << " ";
+	}
 };
 human H;
 
@@ -104,12 +124,36 @@ public:
 	}
 };
 vector<star> drop_star; // 최대 map에 생성되는 star의 수는 100개
+vector<star>::iterator it;
+
+int life_cut(vector<star>::iterator i);
+int game_over();
+
+/* 각 star_producing마다 떨어지는 속도의 차이가 있다.*/
+void star_producing1(vector<star>::iterator i); // 1 , 제일 빠르게 떨어진다.
+void star_producing2(vector<star>::iterator i); // 2
+void star_producing3(vector<star>::iterator i); // 3
+void star_producing4(vector<star>::iterator i); // 4 , 제일 느리게 떨어진다.
 
 int main() {
 	main_screen();
 	frame();
 	int key = 0;
 	while (1) {
+		if (game_over_flag == 1) {
+			while (1) {
+				key = getch();
+				if (key == RESET) {
+					drop_star.clear();
+					game_over_flag = 0;
+					system("cls");
+					main_screen();
+					frame();
+					break;
+				}
+			}
+			holding_time = 0;
+		}
 		if (kbhit()) {
 			key = getch();
 			switch (key) {
@@ -118,7 +162,7 @@ int main() {
 					H.move(LEFT);
 					H.human_print();
 					gotoxy(MAP_X + 10, MAP_Y + 24);
-					cout << H.left_hand.x << " " << H.right_hand.x;
+					//cout << H.left_hand.x << " " << H.right_hand.x;
 				}
 				break;
 			case RIGHT:
@@ -126,20 +170,30 @@ int main() {
 					H.move(RIGHT);
 					H.human_print();
 					gotoxy(MAP_X + 10, MAP_Y + 24);
-					cout << H.left_hand.x << " " << H.right_hand.x;
+					//cout << H.left_hand.x << " " << H.right_hand.x;
 				}
 				break;
 			case QUIT:
+				gotoxy(MAP_X + 10, MAP_Y + 23);
+				return 0;
 				break;
 			}
 		}
+		drop_level += 1;
 		production_star();
-		print_star();
+		//print_star();
 		time_ac();
+		drop();
+		if (drop_level == 9000)
+			drop_level = 1;
 	}
 }
 
 void main_screen() {
+	invincibility_status = 0;
+	game_over_flag = 0;
+	it = drop_star.begin();
+	drop_level = 1;
 	life = 5;
 	holding_time = 0;
 	production_star_time = 0;
@@ -174,7 +228,7 @@ void main_screen() {
 	gotoxy(MAP_X + 9, MAP_Y + 16);
 	cout << "※ Quit : q";
 	gotoxy(MAP_X + 9, MAP_Y + 17);
-	cout << "※ ♥: life";
+	cout << "※ Reset: r";
 	gotoxy(MAP_X + 9, MAP_Y + 19);
 
 	int key = 224;
@@ -204,7 +258,9 @@ void frame() {
 	gotoxy(MAP_X - 5, MAP_Y + 21);
 	cout << "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■";
 	gotoxy(MAP_X + 10, MAP_Y + 22);
-	cout << "TIME : " << holding_time << "      LIFE : " << life;
+	cout << "TIME : " << holding_time;
+	gotoxy(MAP_X + 24, MAP_Y + 22);
+	cout << "LIFE : " << life;
 
 	H.human_print();
 }
@@ -234,9 +290,9 @@ int limit_area(int direct) { // 벽 넘기방지
 	return 0;
 }
 
-void production_star() { // 1초마다 생성
+void production_star() { // 0.25초마다 생성
 	clock_t temp_clock = clock();
-	if ( (temp_clock - production_star_time) >= 500) {
+	if ( (temp_clock - production_star_time) >= 250) {
 		production_star_time = temp_clock;
 		star temp_star;
 		drop_star.push_back(temp_star);
@@ -246,8 +302,8 @@ void print_star() {
 	if (drop_star.empty() == 1)
 		return;
 	int size = drop_star.size();
-	for (int i = 0; i < size; i++) {
-		gotoxy(drop_star[i].Point.x, drop_star[i].Point.y);
+	for (it = drop_star.begin(); it != drop_star.end(); it++) {
+		gotoxy(it->Point.x, it->Point.y);
 		cout << "★";
 	}
 	gotoxy(MAP_X + 10, MAP_Y + 25);
@@ -255,17 +311,126 @@ void print_star() {
 }
 void drop() {
 	int size = drop_star.size();
-	for (int i = 0; i < size; i++) {
-		switch (drop_star[i].drop_speed) {
-		case 1:
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
+	for (it = drop_star.begin(); it != drop_star.end(); it++) {
+		if (it->Point.y >= MAP_Y + 20) {
+			gotoxy(it->Point.x, it->Point.y);
+			cout << " ";
+			it = drop_star.erase(it);
 			break;
 		}
+		switch (it->drop_speed) {
+		case 1:
+			star_producing1(it);
+			break;
+		case 2:
+			star_producing2(it);
+			break;
+		case 3:
+			star_producing3(it);
+			break;
+		case 4:
+			star_producing4(it);
+			break;
+		}
+		if(invincibility_status == 0)
+			life_cut(it);
+		else if(drop_level % 9000 == 0) { // 무적상태 제거
+			invincibility_status = 0;
+			for (int i = 0; i < 50; i++) { // 사람이 깜빡이는 효과 , 잠시 게임 멈춤
+				H.human_cls();
+				Sleep(2);
+				H.human_print();
+			}
+		}
+
+		if (game_over() == 1) {
+			gotoxy(MAP_X + 23, MAP_Y + 11);
+			cout << "GAME OVER";
+			game_over_flag = 1;
+			break;
+		}
+
+	}
+}
+void star_producing1(vector<star>::iterator i) {
+	if (drop_level % 1000 == 0) {
+		gotoxy(it->Point.x , it->Point.y);
+		cout << " ";
+		it->Point.y += 1;
+		gotoxy(it->Point.x, it->Point.y);
+		cout << "★";
+	}
+}
+void star_producing2(vector<star>::iterator i) {
+	if (drop_level % 1200 == 0) {
+		gotoxy(it->Point.x, it->Point.y);
+		cout << " ";
+		it->Point.y += 1;
+		gotoxy(it->Point.x, it->Point.y);
+		cout << "★";
+	}
+}
+void star_producing3(vector<star>::iterator i) {
+	if (drop_level % 2400 == 0) {
+		gotoxy(it->Point.x, it->Point.y);
+		cout << " ";
+		it->Point.y += 1;
+		gotoxy(it->Point.x, it->Point.y);
+		cout << "★";
+	}
+}
+void star_producing4(vector<star>::iterator i) {
+	if (drop_level % 3000 == 0) {
+		gotoxy(it->Point.x, it->Point.y);
+		cout << " ";
+		it->Point.y += 1;
+		gotoxy(it->Point.x, it->Point.y);
+		cout << "★";
+	}
+}
+int life_cut(vector<star>::iterator i) {
+	int x = i->Point.x;	int y = i->Point.y;
+	if (H.head.x == x && H.head.y == y) {
+		life--;
+		gotoxy(MAP_X + 24, MAP_Y + 22);
+		cout << "LIFE : " << life;
+		invincibility_status = 1;
+		return 1;
+	}
+	if (H.left_hand.x == x && H.left_hand.y == y) {
+		life--;
+		gotoxy(MAP_X + 24, MAP_Y + 22);
+		cout << "LIFE : " << life;
+		invincibility_status = 1;
+		return 1;
+	}
+	if (H.right_hand.x == x && H.right_hand.y == y) {
+		life--;
+		gotoxy(MAP_X + 24, MAP_Y + 22);
+		cout << "LIFE : " << life;
+		invincibility_status = 1;
+		return 1;
+	}
+	if (H.left_leg.x == x && H.left_leg.y == y) {
+		life--;
+		gotoxy(MAP_X + 24, MAP_Y + 22);
+		cout << "LIFE : " << life;
+		invincibility_status = 1;
+		return 1;
+	}
+	if (H.right_leg.x == x && H.right_leg.y == y) {
+		life--;
+		gotoxy(MAP_X + 24, MAP_Y + 22);
+		cout << "LIFE : " << life;
+		invincibility_status = 1;
+		return 1;
+	}
+	return 0;
+}
+int game_over() {
+	if (life == 0) {
+		game_over_flag = 1;
+		return 1;
 	}
 }
 

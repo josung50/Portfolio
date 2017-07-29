@@ -1,11 +1,14 @@
 ﻿  main.cpp
-c:\users\josungryong\documents\visual studio 2015\projects\avoidstar\avoidstar\main.cpp(11): warning C4091: 'typedef ': 변수를 선언하지 않으면 'point' 왼쪽은 무시됩니다.
-c:\users\josungryong\documents\visual studio 2015\projects\avoidstar\avoidstar\main.cpp(112): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\conio.h(458): note: 'kbhit' 선언을 참조하십시오.
-c:\users\josungryong\documents\visual studio 2015\projects\avoidstar\avoidstar\main.cpp(113): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+c:\users\josungryong\portfolio\game\avoidstar\avoidstar\main.cpp(11): warning C4091: 'typedef ': 변수를 선언하지 않으면 'point' 왼쪽은 무시됩니다.
+c:\users\josungryong\portfolio\game\avoidstar\avoidstar\main.cpp(145): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\conio.h(452): note: 'getch' 선언을 참조하십시오.
-c:\users\josungryong\documents\visual studio 2015\projects\avoidstar\avoidstar\main.cpp(181): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
+c:\users\josungryong\portfolio\game\avoidstar\avoidstar\main.cpp(157): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\conio.h(458): note: 'kbhit' 선언을 참조하십시오.
-c:\users\josungryong\documents\visual studio 2015\projects\avoidstar\avoidstar\main.cpp(257): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-  AvoidStar.vcxproj -> c:\users\josungryong\documents\visual studio 2015\Projects\AvoidStar\Debug\AvoidStar.exe
-  AvoidStar.vcxproj -> c:\users\josungryong\documents\visual studio 2015\Projects\AvoidStar\Debug\AvoidStar.pdb (Full PDB)
+c:\users\josungryong\portfolio\game\avoidstar\avoidstar\main.cpp(158): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\conio.h(452): note: 'getch' 선언을 참조하십시오.
+c:\users\josungryong\portfolio\game\avoidstar\avoidstar\main.cpp(236): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\conio.h(458): note: 'kbhit' 선언을 참조하십시오.
+c:\users\josungryong\portfolio\game\avoidstar\avoidstar\main.cpp(438): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+c:\users\josungryong\portfolio\game\avoidstar\avoidstar\main.cpp(435): warning C4715: 'game_over': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  AvoidStar.vcxproj -> C:\Users\josungryong\Portfolio\Game\AvoidStar\Debug\AvoidStar.exe
+  AvoidStar.vcxproj -> C:\Users\josungryong\Portfolio\Game\AvoidStar\Debug\AvoidStar.pdb (Full PDB)
